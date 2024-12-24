@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            arch: x86_64
+            compiler: g++
+          - os: ubuntu-24.04-arm
+            arch: aarch64
+            compiler: g++
+          - os: macos-latest
+            arch: macOS
+            compiler: clang++
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.arch }} (${{ matrix.compiler }})
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (Release)
+        run: |
+          mkdir build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
+
+      - name: Run tests
+        run: cd build && ctest --output-on-failure
+
+      - name: Build (Debug)
+        run: |
+          mkdir build-dbg && cd build-dbg
+          cmake .. -DCMAKE_BUILD_TYPE=Debug
+          cmake --build . -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
+
+      - name: Run tests (Debug)
+        run: cd build-dbg && ctest --output-on-failure
+
+      - name: Run examples
+        run: |
+          cd build
+          echo "=== basic_example ==="
+          ./examples/ringbuffer_basic_example
+          echo "=== spsc_example ==="
+          ./examples/ringbuffer_spsc_example

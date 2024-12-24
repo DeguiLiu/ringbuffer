@@ -1,0 +1,10 @@
+build/
+build-*/
+.cache/
+*.o
+*.a
+*.so
+*.exe
+example
+test
+CMakeUserPresets.json

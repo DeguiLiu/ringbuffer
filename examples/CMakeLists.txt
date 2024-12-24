@@ -1,0 +1,5 @@
+add_executable(ringbuffer_basic_example basic_example.cpp)
+target_link_libraries(ringbuffer_basic_example ringbuffer)
+
+add_executable(ringbuffer_spsc_example spsc_example.cpp)
+target_link_libraries(ringbuffer_spsc_example ringbuffer Threads::Threads)
