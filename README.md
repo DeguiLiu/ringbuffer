@@ -1,10 +1,10 @@
 # spsc::Ringbuffer
 
+> Forked from [jnk0le/Ring-Buffer](https://github.com/jnk0le/Ring-Buffer) with API redesign, correctness fixes, Catch2 tests and CI.
+
 Lock-free, wait-free SPSC (Single-Producer Single-Consumer) ring buffer for C++14.
 
 Header-only. Zero dependencies. Cache-line aligned to avoid false sharing.
-
-Based on [jnk0le/Ring-Buffer](https://github.com/jnk0le/Ring-Buffer), with correctness fixes and API redesign.
 
 ## Features
 
@@ -107,7 +107,7 @@ Header-only. Copy `include/spsc/ringbuffer.hpp` into your project, or use CMake 
 
 ```cmake
 FetchContent_Declare(ringbuffer
-    GIT_REPOSITORY https://gitee.com/liudegui/ringbuffer2.git
+    GIT_REPOSITORY https://github.com/DeguiLiu/ringbuffer.git
     GIT_TAG master)
 FetchContent_MakeAvailable(ringbuffer)
 target_link_libraries(your_target PRIVATE ringbuffer)
