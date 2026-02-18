@@ -1,5 +1,9 @@
 # spsc::Ringbuffer
 
+[![CI](https://github.com/DeguiLiu/ringbuffer/actions/workflows/ci.yml/badge.svg)](https://github.com/DeguiLiu/ringbuffer/actions/workflows/ci.yml)
+[![Code Coverage](https://github.com/DeguiLiu/ringbuffer/actions/workflows/coverage.yml/badge.svg)](https://github.com/DeguiLiu/ringbuffer/actions/workflows/coverage.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > Forked from [jnk0le/Ring-Buffer](https://github.com/jnk0le/Ring-Buffer) with API redesign, correctness fixes, Catch2 tests and CI.
 
 Lock-free, wait-free SPSC (Single-Producer Single-Consumer) ring buffer for C++14.
@@ -100,6 +104,11 @@ Options:
 |-------------|---------|-------------|
 | `RINGBUFFER_BUILD_TESTS` | ON | Build Catch2 tests |
 | `RINGBUFFER_BUILD_EXAMPLES` | ON | Build example programs |
+
+## Design & Documentation
+
+- **设计文档**: [docs/design_spsc_ringbuffer_zh.md](docs/design_spsc_ringbuffer_zh.md) – 详细的架构设计、内存序分析、性能优化
+- **博客文章**: [SPSC Ring Buffer 设计与实现](https://deguiliu.github.io/tech-notes/posts/performance/spsc_ringbuffer_design/) – 完整的技术分析
 
 ## Integration
 
